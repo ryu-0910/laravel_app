@@ -10942,3 +10942,15 @@ a.text-dark:focus {
   }
 }
 
+.container {
+  position: relative;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 300;
+  text-align: center;
+  padding: 0 0 20px;
+  margin: 0 0 30px;
+}
+
