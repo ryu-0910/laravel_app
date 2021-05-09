@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // 1対1の場合のチャットルームIDを取得
+    public function roomId ($partnerId)
+    {
+        $rooms = $this->hasMany('App\RoomUser')->get();
+
+        $roomId = null;
+        foreach ($rooms as $room) {
+            $roomRecord = RoomUser::where('room_id', $room->room_id)
+                    ->where('user_id', $partnerId)
+                    ->first();
+            if ($roomRecord) {
+                $roomId = $roomRecord->room_id;
+            }
+        }
+
+        return $roomId;
+    }
 }
